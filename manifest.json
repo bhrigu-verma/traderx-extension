@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "TraderX Pro",
-  "version": "4.0.0",
+  "version": "1.0.0",
   "description": "AI-powered trading platform: ML sentiment analysis, AI trade copilot, whale tracker, premium features, real-time prices, portfolio tracking, and institutional-grade analytics",
   "permissions": ["storage", "notifications", "tabs", "scripting"],
   "host_permissions": [
