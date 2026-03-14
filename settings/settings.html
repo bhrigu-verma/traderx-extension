@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>TraderX Settings</title>
+  <link rel="stylesheet" href="settings.css">
+  <link rel="icon" type="image/png" href="../icons/icon16.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="app">
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <img src="../icons/logo.png" alt="TraderX Logo" style="width: 32px; height: 32px; object-fit: contain;">
+        </div>
+        <span class="logo-text">TraderX Pro</span>
+        <span class="version">v4.0</span>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-label">Settings</div>
+        <div class="nav-item active" data-tab="filters">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+            </svg>
+          </span>
+          <span>Filters</span>
+        </div>
+        <div class="nav-item" data-tab="tiers">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </span>
+          <span>Account Tiers</span>
+        </div>
+        <div class="nav-item" data-tab="watchlist">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+          </span>
+          <span>Watchlist</span>
+        </div>
+        <div class="nav-item" data-tab="alerts">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+          </span>
+          <span>Alerts</span>
+        </div>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-label">Discover</div>
+        <div class="nav-item" data-tab="suggested">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
+            </svg>
+          </span>
+          <span>Suggested Follows</span>
+        </div>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-label">Advanced</div>
+        <div class="nav-item" data-tab="display">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
+          </span>
+          <span>Display</span>
+        </div>
+        <div class="nav-item" data-tab="data">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+          </span>
+          <span>Data &amp; Export</span>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <button class="btn btn-primary btn-full" id="save-all">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+            <polyline points="7 3 7 8 15 8"></polyline>
+          </svg>
+          Save All
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content">
+      <!-- FILTERS TAB -->
+      <div class="tab-content active" id="tab-filters">
+        <div class="page-header">
+          <h1>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+            </svg>
+            Spam Filters
+          </h1>
+          <p>Control what content is hidden from your feed to reduce noise.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>Content Filters</h2>
+            <div class="master-toggle" style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 12px; color: var(--text-secondary);">Enable All</span>
+              <label class="toggle">
+                <input type="checkbox" id="filter-master" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="filter-grid">
+            <div class="filter-item">
+              <div class="filter-info">
+                <span class="filter-title">Engagement Bait</span>
+                <span class="filter-desc">"RT if you agree", "Like if..."</span>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="filter-engagement" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="filter-item">
+              <div class="filter-info">
+                <span class="filter-title">Promotional Content</span>
+                <span class="filter-desc">Discord, Telegram, courses, giveaways</span>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="filter-promo" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="filter-item">
+              <div class="filter-info">
+                <span class="filter-title">Low-Effort Posts</span>
+                <span class="filter-desc">Emoji spam, brief text, clutter</span>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="filter-low-effort" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="filter-item">
+              <div class="filter-info">
+                <span class="filter-title">Crypto Scams</span>
+                <span class="filter-desc">Wallet drainers, airdrops, pump schemes</span>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="filter-crypto" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="filter-item">
+              <div class="filter-info">
+                <span class="filter-title">Disclaimers</span>
+                <span class="filter-desc">NFA, DYOR, "not financial advice"</span>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="filter-disclaimers" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="filter-item">
+              <div class="filter-info">
+                <span class="filter-title">Market Hours Threads</span>
+                <span class="filter-desc">Hide long threads during active trading</span>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="filter-threads" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="filter-item">
+              <div class="filter-info">
+                <span class="filter-title">Old News</span>
+                <span class="filter-desc">Hide "yesterday" or "last week" content</span>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="filter-old-news" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="filter-item">
+              <div class="filter-info">
+                <span class="filter-title">Time-Sensitive Mode</span>
+                <span class="filter-desc">Auto-adjust filters by market hours</span>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="filter-time-sensitive" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIERS TAB -->
+      <div class="tab-content" id="tab-tiers">
+        <div class="page-header">
+          <h1>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+            Account Tiers
+          </h1>
+          <p>Prioritize information from trusted sources. Tier 1 users are never filtered.</p>
+        </div>
+
+        <div class="card">
+          <div class="tier-section">
+            <div class="tier-header tier1">
+              <span class="tier-badge" style="color: #FF2E63;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+              </span>
+              <div class="tier-info">
+                <span class="tier-title">Tier 1 - Critical</span>
+                <span class="tier-desc">Red border • Never filtered • Official sources only</span>
+              </div>
+            </div>
+            <textarea id="tier1-accounts" spellcheck="false"
+              placeholder="One username per line (without @)&#10;Example:&#10;federalreserve&#10;secgov"></textarea>
+          </div>
+
+          <div class="tier-section">
+            <div class="tier-header tier2">
+              <span class="tier-badge" style="color: #FF9F1C;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </span>
+              <div class="tier-info">
+                <span class="tier-title">Tier 2 - Trusted</span>
+                <span class="tier-desc">Orange border • Reliable analysts & news</span>
+              </div>
+            </div>
+            <textarea id="tier2-accounts" spellcheck="false"
+              placeholder="One username per line&#10;Example:&#10;unusual_whales&#10;deltaone"></textarea>
+          </div>
+
+          <div class="tier-section">
+            <div class="tier-header tier3">
+              <span class="tier-badge" style="color: #FFD93D;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+              </span>
+              <div class="tier-info">
+                <span class="tier-title">Tier 3 - Signals</span>
+                <span class="tier-desc">Yellow border • Trading signals & noise</span>
+              </div>
+            </div>
+            <textarea id="tier3-accounts" spellcheck="false"
+              placeholder="One username per line&#10;Example:&#10;optionsflow&#10;tradingsetups"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- WATCHLIST TAB -->
+      <div class="tab-content" id="tab-watchlist">
+        <div class="page-header">
+          <h1>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            Watchlist
+          </h1>
+          <p>Manage your tracked tickers for real-time highlighting.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>Add Tickers</h2>
+          </div>
+          <div class="input-row">
+            <input type="text" id="add-ticker-input" placeholder="Enter ticker (e.g., AAPL, BTC, TSLA)">
+            <button class="btn btn-success" id="add-ticker-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              Add
+            </button>
+          </div>
+
+          <div class="watchlist-display" id="watchlist-display">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>Quick Add Popular</h2>
+          </div>
+          <div class="quick-tickers">
+            <button class="quick-ticker" data-ticker="SPY">SPY</button>
+            <button class="quick-ticker" data-ticker="QQQ">QQQ</button>
+            <button class="quick-ticker" data-ticker="TSLA">TSLA</button>
+            <button class="quick-ticker" data-ticker="NVDA">NVDA</button>
+            <button class="quick-ticker" data-ticker="AAPL">AAPL</button>
+            <button class="quick-ticker" data-ticker="BTC">BTC</button>
+            <button class="quick-ticker" data-ticker="ETH">ETH</button>
+            <button class="quick-ticker" data-ticker="AMD">AMD</button>
+            <button class="quick-ticker" data-ticker="META">META</button>
+            <button class="quick-ticker" data-ticker="GOOGL">GOOGL</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ALERTS TAB -->
+      <div class="tab-content" id="tab-alerts">
+        <div class="page-header">
+          <h1>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+            Keyword Alerts
+          </h1>
+          <p>Get notified instantly when important keywords appear.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>Active Alert Rules</h2>
+            <label class="toggle">
+              <input type="checkbox" id="alerts-enabled" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+
+          <div class="alert-rules" id="alert-rules">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- SUGGESTED TAB -->
+      <div class="tab-content" id="tab-suggested">
+        <div class="page-header">
+          <h1>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
+            </svg>
+            Suggested Follows
+          </h1>
+          <p>Curated list of top trading & finance accounts.</p>
+        </div>
+
+        <div class="card suggested-header-card" style="border-left: 3px solid var(--accent-primary);">
+          <div style="display: flex; gap: 12px; align-items: start;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              style="color: var(--accent-primary); flex-shrink: 0;">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+            <div>
+              <p style="font-size: 15px; margin-bottom: 6px; color: var(--text-primary); font-weight: 600;">
+                Pre-configured Quality</p>
+              <p class="text-muted" style="font-size: 13px;">These accounts are pre-added to your tiers. Tweets from
+                these accounts will be highlighted and never filtered.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="suggested-categories">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- DISPLAY TAB -->
+      <div class="tab-content" id="tab-display">
+        <div class="page-header">
+          <h1>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
+            Display Settings
+          </h1>
+          <p>Customize the interface look and feel.</p>
+        </div>
+
+        <div class="card">
+          <div class="filter-grid">
+            <div class="filter-item">
+              <div class="filter-info">
+                <span class="filter-title">Show Price Sidebar</span>
+                <span class="filter-desc">Live prices embedded on X.com</span>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="ui-sidebar" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="filter-item">
+              <div class="filter-info">
+                <span class="filter-title">Show Ticker Tags</span>
+                <span class="filter-desc">BTC ↑, TSLA ↓ badges on posts</span>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="ui-ticker-tags" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="filter-item">
+              <div class="filter-info">
+                <span class="filter-title">Show Tier Badges</span>
+                <span class="filter-desc">CRITICAL, TRUSTED labels</span>
+              </div>
+              <label class="toggle">
+                <input type="checkbox" id="ui-tier-badges" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting-row"
+            style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-color);">
+            <label style="display: block; margin-bottom: 8px; font-weight: 600;">Price Refresh Interval</label>
+            <div class="input-with-unit" style="display: flex; align-items: center; gap: 8px;">
+              <input type="number" id="ui-refresh" min="15" max="300" value="30" style="width: 100px;">
+              <span class="text-muted">seconds</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DATA TAB -->
+      <div class="tab-content" id="tab-data">
+        <div class="page-header">
+          <h1>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Data & Export
+          </h1>
+          <p>Backup or reset your configuration.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2>Export / Import</h2>
+          </div>
+          <div class="button-row" style="display: flex; gap: 12px;">
+            <button class="btn btn-secondary" id="export-settings">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+              Export Settings
+            </button>
+            <button class="btn btn-secondary" id="import-settings">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Import Settings
+            </button>
+          </div>
+          <input type="file" id="import-file" accept=".json" style="display: none;">
+        </div>
+
+        <div class="card card-danger">
+          <div class="card-header">
+            <h2 style="color: var(--danger);">Danger Zone</h2>
+          </div>
+          <button class="btn btn-danger" id="reset-settings">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="3 6 5 6 21 6"></polyline>
+              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+            </svg>
+            Reset All Settings
+          </button>
+          <p class="text-muted" style="margin-top: 12px; font-size: 12px;">This will delete all your custom settings and
+            cannot be undone.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Status Toast -->
+  <div class="toast" id="toast">
+    <span id="toast-message">Saved!</span>
+  </div>
+
+  <!-- 
+    IMPORTANT: Manifest V3 Content Security Policy BLOCKS inline scripts!
+    We MUST use an external .js file for all JavaScript code.
+    This is the ONLY way to make scripts work in extension pages.
+  -->
+  <script src="settings-bundle.js"></script>
+</body>
+
+</html>

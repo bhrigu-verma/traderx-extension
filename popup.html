@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 360px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+      color: #F9FAFB;
+    }
+
+    .header {
+      padding: 16px;
+      background: rgba(59, 130, 246, 0.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 18px;
+      font-weight: bold;
+      color: #60A5FA;
+    }
+
+    .market-status {
+      font-size: 12px;
+      color: #9CA3AF;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 4px 10px;
+      border-radius: 12px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      padding: 16px;
+      background: rgba(0, 0, 0, 0.2);
+    }
+
+    .stat {
+      text-align: center;
+      padding: 12px 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: #9CA3AF;
+      text-transform: uppercase;
+    }
+
+    .stat-value {
+      font-size: 24px;
+      font-weight: bold;
+      color: #60A5FA;
+      margin-top: 4px;
+    }
+
+    .section {
+      padding: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .section:last-child {
+      border-bottom: none;
+    }
+
+    .section-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: #9CA3AF;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+    }
+
+    .toggle-label {
+      font-size: 14px;
+      color: #E5E7EB;
+    }
+
+    .toggle {
+      position: relative;
+      width: 44px;
+      height: 24px;
+    }
+
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #374151;
+      border-radius: 24px;
+      transition: 0.3s;
+    }
+
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background: white;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+    .toggle input:checked+.toggle-slider {
+      background: #3B82F6;
+    }
+
+    .toggle input:checked+.toggle-slider:before {
+      transform: translateX(20px);
+    }
+
+    /* Watchlist Section - Enhanced */
+    .watchlist-section {
+      background: rgba(16, 185, 129, 0.1);
+    }
+
+    .watchlist-input-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 12px 14px;
+      border: 2px solid #374151;
+      border-radius: 8px;
+      background: #1F2937;
+      color: #F9FAFB;
+      font-size: 14px;
+    }
+
+    input[type="text"]::placeholder {
+      color: #6B7280;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #10B981;
+    }
+
+    .btn {
+      padding: 12px 18px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .btn-success {
+      background: #10B981;
+      color: white;
+    }
+
+    .btn-success:hover {
+      background: #059669;
+    }
+
+    .btn-primary {
+      background: #3B82F6;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #2563EB;
+    }
+
+    .btn-secondary {
+      background: #374151;
+      color: #E5E7EB;
+    }
+
+    .btn-secondary:hover {
+      background: #4B5563;
+    }
+
+    .btn-full {
+      width: 100%;
+    }
+
+    .watchlist-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: #3B82F6;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tag:hover {
+      background: #EF4444;
+    }
+
+    .tag-remove {
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .empty-state {
+      text-align: center;
+      color: #6B7280;
+      padding: 16px;
+      font-size: 13px;
+    }
+
+    .help-text {
+      font-size: 12px;
+      color: #6B7280;
+      margin-top: 8px;
+    }
+
+    .success-msg {
+      background: rgba(16, 185, 129, 0.2);
+      color: #10B981;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      margin-top: 8px;
+      display: none;
+    }
+
+    .actions {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer {
+      padding: 12px 16px;
+      background: rgba(0, 0, 0, 0.2);
+      text-align: center;
+      font-size: 11px;
+      color: #6B7280;
+    }
+
+    .footer a {
+      color: #60A5FA;
+      text-decoration: none;
+    }
+
+    /* Search Section */
+    .search-section {
+      background: rgba(59, 130, 246, 0.1);
+    }
+
+    .search-input-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .search-status {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #9CA3AF;
+    }
+
+    .search-status.active {
+      color: #10B981;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <span class="logo">⚡ TraderX</span>
+    <span class="market-status" id="market-status">Loading...</span>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-label">Hidden</div>
+      <div class="stat-value" id="stat-hidden">0</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Alerts</div>
+      <div class="stat-value" id="stat-alerts">0</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Watchlist</div>
+      <div class="stat-value" id="stat-watchlist">0</div>
+    </div>
+  </div>
+
+  <!-- SEARCH SECTION -->
+  <div class="section search-section">
+    <div class="section-title">🔍 Search Ticker on Page</div>
+    <div class="search-input-row">
+      <input type="text" id="search-input" placeholder="Enter ticker (BTC, TSLA...)">
+      <button class="btn btn-primary" id="search-btn">Search</button>
+    </div>
+    <div class="search-status" id="search-status"></div>
+  </div>
+
+  <!-- WATCHLIST SECTION -->
+  <div class="section watchlist-section">
+    <div class="section-title">➕ Add to Watchlist</div>
+    <div class="watchlist-input-row">
+      <input type="text" id="ticker-input" placeholder="Type ticker (e.g., AAPL, BTC, NVDA)">
+      <button class="btn btn-success" id="add-ticker">Add</button>
+    </div>
+    <div class="success-msg" id="add-success">✓ Ticker added!</div>
+    <div class="help-text">💡 Add tickers to highlight them in your feed</div>
+    <div style="margin-top: 12px;">
+      <div class="section-title" style="margin-bottom: 8px;">Your Watchlist</div>
+      <div class="watchlist-tags" id="watchlist-container">
+        <div class="empty-state">No tickers yet - add one above!</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Quick Toggles</div>
+    <div class="toggle-row">
+      <span class="toggle-label">🚫 Spam Filter</span>
+      <label class="toggle">
+        <input type="checkbox" id="toggle-spam">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    <div class="toggle-row">
+      <span class="toggle-label">🎯 Watchlist Highlight</span>
+      <label class="toggle">
+        <input type="checkbox" id="toggle-watchlist">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    <div class="toggle-row">
+      <span class="toggle-label">🎨 Tier Colors</span>
+      <label class="toggle">
+        <input type="checkbox" id="toggle-tiers">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    <div class="toggle-row">
+      <span class="toggle-label">⏰ Time-Sensitive Mode</span>
+      <label class="toggle">
+        <input type="checkbox" id="toggle-time">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    <div class="toggle-row">
+      <span class="toggle-label">📊 Price Sidebar</span>
+      <label class="toggle">
+        <input type="checkbox" id="toggle-sidebar">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-secondary btn-full" id="open-settings">⚙️ Advanced Settings</button>
+    <button class="btn btn-secondary btn-full" id="refresh-feed">🔄 Refresh Feed</button>
+  </div>
+
+  <div class="footer">
+    TraderX v1.1.0 · <a href="#" id="view-alerts">View Alert History</a>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+
+</html>

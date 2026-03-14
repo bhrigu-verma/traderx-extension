@@ -1,0 +1,66 @@
+{
+  "manifest_version": 3,
+  "name": "TraderX Pro",
+  "version": "4.0.0",
+  "description": "AI-powered trading platform: ML sentiment analysis, AI trade copilot, whale tracker, premium features, real-time prices, portfolio tracking, and institutional-grade analytics",
+  "permissions": ["storage", "notifications", "tabs", "scripting"],
+  "host_permissions": [
+    "https://x.com/*",
+    "https://twitter.com/*",
+    "https://api.coingecko.com/*",
+    "https://query1.finance.yahoo.com/*",
+    "https://cdn.jsdelivr.net/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_page": "settings/settings.html",
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "48": "assets/icons/icon-48.png",
+    "128": "assets/icons/icon-128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://x.com/*", "https://twitter.com/*"],
+      "js": [
+        "suggested.js",
+        "utils.js",
+        "content/priceFetcher.js",
+        "content/analysisEngine.js",
+        "content/twitterFetcher.js",
+        "content/premiumSystem.js",
+        "content/aiCopilot.js",
+        "content/whaleTracker.js",
+        "content/comboAlerts.js",
+        "content/portfolioTracker.js",
+        "content/sectorHeatmap.js",
+        "content/trackerDashboard.js",
+        "content/tweetProcessor.js",
+        "content/accountDirectory.js",
+        "content/advancedsearch.js",
+        "content/sidebar.js",
+        "content/content.js"
+      ],
+      "css": ["content/content.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["accounts.json", "content/finbert-worker.js"],
+      "matches": ["https://x.com/*", "https://twitter.com/*"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+  }
+}
