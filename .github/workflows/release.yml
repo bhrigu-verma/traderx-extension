@@ -30,8 +30,34 @@ jobs:
           ZIP_PATH=$(ls releases/traderx-pro-v*.zip | head -n 1)
           echo "zip_path=$ZIP_PATH" >> "$GITHUB_OUTPUT"
 
+      - name: Generate release notes
+        env:
+          TAG_NAME: ${{ github.ref_name }}
+        run: |
+          cat > release-notes.md <<EOF
+          ## Installation
+
+          1. Download the attached zip file from this release.
+          2. Extract the zip to a folder on your computer.
+          3. Open chrome://extensions/ in Chrome, Brave, Arc, Edge, or Opera.
+          4. Enable **Developer mode**.
+          5. Click **Load unpacked**.
+          6. Select the extracted extension folder.
+          7. Open X/Twitter and TraderX Pro will activate.
+
+          ## Included Asset
+
+          - Attached release zip: traderx-pro-${TAG_NAME}.zip
+
+          ## Notes
+
+          - This repository contains only the browser extension code.
+          - If Chrome blocks loading from the extracted folder, re-extract the zip into a normal writable directory like Downloads or Desktop.
+          - For source code and documentation, visit: https://github.com/bhrigu-verma/traderx-extension
+          EOF
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           files: ${{ steps.zip.outputs.zip_path }}
-          generate_release_notes: true
+          body_path: release-notes.md
