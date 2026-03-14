@@ -25,6 +25,21 @@ Use the packaging script if needed:
 bash scripts/package-extension.sh
 ```
 
+## GitHub Releases (for users)
+
+This repo auto-generates a downloadable extension zip on version tags.
+
+1. Bump `version` in `manifest.json`
+2. Commit and push to `main`
+3. Create and push a tag:
+
+```bash
+git tag v4.0.1
+git push origin v4.0.1
+```
+
+GitHub Actions will build `releases/traderx-pro-v<version>.zip` and attach it to the GitHub Release for that tag.
+
 ## Notes
 
 - This repository intentionally contains only extension-side code.

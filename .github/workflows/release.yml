@@ -1,0 +1,37 @@
+name: Build and Release Extension Zip
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build extension zip
+        run: bash scripts/package-extension.sh
+
+      - name: Locate zip file
+        id: zip
+        run: |
+          ZIP_PATH=$(ls releases/traderx-pro-v*.zip | head -n 1)
+          echo "zip_path=$ZIP_PATH" >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ steps.zip.outputs.zip_path }}
+          generate_release_notes: true
